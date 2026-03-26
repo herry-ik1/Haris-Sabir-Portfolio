@@ -29,7 +29,7 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Glow Effect */
+        /* Glow Effect */
         body::before {
             content: '';
             position: fixed;
@@ -42,7 +42,7 @@
             z-index: 0;
         }
 
-        /* Navigation Bar - Fully Responsive */
+        /* Navigation Bar */
         .navbar {
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(12px);
@@ -239,11 +239,11 @@
             transform: translateY(-2px);
         }
 
-        /* Project Grid - Responsive */
+        /* Project Grid - 2 Rows */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: clamp(1rem, 3vw, 2rem);
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(1.2rem, 3vw, 2rem);
             margin-top: clamp(1.5rem, 4vw, 2rem);
         }
 
@@ -314,7 +314,7 @@
             transform: translateX(4px);
         }
 
-        /* About Section - Responsive */
+        /* About Section */
         .about-content {
             display: flex;
             gap: clamp(1.5rem, 5vw, 3rem);
@@ -451,7 +451,6 @@
             font-size: clamp(0.9rem, 3.5vw, 1rem);
         }
 
-        /* Clickable Links Style */
         .contact-info a {
             color: #7f9cf5;
             text-decoration: none;
@@ -464,7 +463,7 @@
             text-decoration: underline;
         }
 
-        /* Live Projects Links - Responsive */
+        /* Live Projects Links */
         .live-projects {
             margin-top: 2rem;
             padding-top: 1rem;
@@ -535,10 +534,67 @@
         }
 
         /* ============================================ */
-        /* EXTRA RESPONSIVE MEDIA QUERIES */
+        /* FLOATING AI BUTTON - DIRECT LINK */
         /* ============================================ */
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5a67d8, #7f9cf5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(90, 103, 216, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .ai-chat-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(90, 103, 216, 0.6);
+        }
+
+        .ai-chat-btn i {
+            font-size: 28px;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(90, 103, 216, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(90, 103, 216, 0.7);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(90, 103, 216, 0.4);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .ai-chat-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .ai-chat-btn i {
+                font-size: 24px;
+            }
+        }
         
-        /* Small Mobile (up to 480px) */
         @media (max-width: 480px) {
             .navbar {
                 flex-direction: column;
@@ -548,10 +604,6 @@
             .nav-links {
                 gap: 1rem;
                 justify-content: center;
-            }
-            
-            .nav-links a {
-                font-size: 0.9rem;
             }
             
             .btn-group {
@@ -580,78 +632,17 @@
             .skills {
                 width: 100%;
             }
-            
-            .edu-badge {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .live-projects {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .live-projects a {
-                margin-left: 0 !important;
-                display: inline-block;
-                width: auto;
-            }
         }
         
-        /* Mobile (481px - 768px) */
-        @media (min-width: 481px) and (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            
-            .project-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .skills {
-                width: 100%;
-            }
-            
-            .contact-info {
-                gap: 1.2rem;
-            }
-        }
-        
-        /* Tablet (769px - 1024px) */
         @media (min-width: 769px) and (max-width: 1024px) {
             .project-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
-            .container {
-                max-width: 95%;
-            }
         }
         
-        /* Desktop (1025px and above) */
         @media (min-width: 1025px) {
             .project-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .container {
-                max-width: 1200px;
-            }
-        }
-        
-        /* Large Desktop (1400px and above) */
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1300px;
-            }
-            
-            .project-grid {
-                grid-template-columns: repeat(4, 1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -692,6 +683,7 @@
                     <a href="https://compute-mart.netlify.app" target="_blank">Compute Mart</a>
                     <a href="https://nebula-weather.netlify.app" target="_blank">Nebula Weather</a>
                     <a href="https://harisik1.pythonanywhere.com/login" target="_blank">Smart Todo</a>
+                    <a href="https://haris-assistant.netlify.app" target="_blank">AI Assistant</a>
                 </div>
 
                 <div class="tech-icons">
@@ -704,7 +696,7 @@
             </div>
         </div>
 
-        <!-- Projects Page -->
+        <!-- Projects Page - 3 Columns (2 Rows) -->
         <div id="projects" class="page">
             <div class="card">
                 <h2>My Projects</h2>
@@ -745,6 +737,16 @@
                         <h3>Smart Todo</h3>
                         <p>Full-stack task management app with user authentication. Built with Django, Python, SQLite, and Bootstrap.</p>
                         <a href="https://harisik1.pythonanywhere.com/login" target="_blank" class="project-link">
+                            Live Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- AI Assistant -->
+                    <div class="project-item">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Assistant</h3>
+                        <p>Intelligent chatbot assistant that can answer questions, provide information, and help with various tasks using AI.</p>
+                        <a href="https://haris-assistant.netlify.app" target="_blank" class="project-link">
                             Live Demo <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -843,19 +845,19 @@
                         <i class="fas fa-envelope"></i> 
                         <a href="mailto:harissabir60@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Haris%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect..." 
                            target="_blank">
-                            harissabir60@gmail.com
+                            Gmail
                         </a>
                     </span>
                     <span>
                         <i class="fas fa-phone"></i> 
                         <a href="tel:+923183782852">
-                            +92 3183782852
+                            Phone
                         </a>
                     </span>
                     <span>
                         <i class="fab fa-linkedin"></i> 
                         <a href="https://www.linkedin.com/in/haris-sabir-b341543b8" target="_blank">
-                            linkedin.com/in/haris-sabir
+                            linkedin
                         </a>
                     </span>
                 </div>
@@ -865,8 +867,13 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>© 2025 Haris Sabir | Muhammad Ali Jinnah University  </p>
+        <p>© 2025 Haris Sabir | Muhammad Ali Jinnah University.</p>
     </div>
+
+    <!-- Floating AI Button - Direct Link to AI Assistant -->
+    <a href="https://haris-assistant.netlify.app" target="_blank" class="ai-chat-btn">
+        <i class="fas fa-robot"></i>
+    </a>
 
     <script>
         // Page change function
